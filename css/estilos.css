@@ -108,8 +108,8 @@ h1, h2, h3 { font-family: var(--f-titulo); line-height: 1.1; margin: 0; }
 
 @media (max-width: 860px) {
   .portada__grid { grid-template-columns: 1fr; }
-  .portada__sello { order: -1; justify-items: start; }
-  .portada__sello img { width: 170px; }
+  .portada__sello { order: -1; justify-items: center; }
+  .portada__sello img { width: min(70%, 240px); margin-inline: auto; }
 }
 
 /* ---------- Carta ---------- */

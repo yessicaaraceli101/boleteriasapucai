@@ -33,7 +33,6 @@
   function pintarHorarios() {
     const ahora = new Date();
     const idxHoy = (ahora.getDay() + 6) % 7; // lunes = 0
-    const minutos = ahora.getHours() * 60 + ahora.getMinutes();
     const lista = $("#listaHorarios");
     lista.innerHTML = DIAS.map(([clave, nombre], i) => {
       const h = C.horarios[clave];
@@ -42,16 +41,6 @@
         <span>${nombre}${i === idxHoy ? " <em>hoy</em>" : ""}</span><span>${texto}</span></li>`;
     }).join("");
 
-    const hoy = C.horarios[DIAS[idxHoy][0]];
-    const estado = $("#estadoAhora");
-    if (hoy && minutos >= aMin(hoy.abre) && minutos < aMin(hoy.cierra)) {
-      estado.textContent = "Abierto ahora";
-      estado.textContent = `Abierto ahora, hasta las ${hoy.cierra}`;
-      $("#puntoEstado").className = "punto abierto";
-    } else {
-      estado.textContent = "Cerrado ahora";
-      $("#puntoEstado").className = "punto";
-    }
   }
   pintarHorarios();
   setInterval(pintarHorarios, 60000);
